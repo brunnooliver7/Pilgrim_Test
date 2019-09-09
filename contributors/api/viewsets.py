@@ -12,3 +12,8 @@ class ContributorViewSet(ModelViewSet):
     """
     queryset = Contributor.objects.all()
     serializer_class = ContributorSerializer
+
+    filter_backends = (SearchFilter,)
+    search_fields = (
+        'id', 'name', 'author', 'editor', 'reviewer',
+        'email', 'country')
