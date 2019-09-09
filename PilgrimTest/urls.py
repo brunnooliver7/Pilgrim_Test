@@ -15,7 +15,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf.urls import include
+from rest_framework import routers
+from contributors.api.viewsets import ContributorViewSet
+from books.api.viewsets import BookViewSet
+
+router = routers.DefaultRouter()
+router.register(r'contributors', ContributorViewSet, base_name='Contributor')
+router.register(r'books', BookViewSet)
 
 urlpatterns = [
+    path('', include(router.urls)),
     path('admin/', admin.site.urls),
 ]
