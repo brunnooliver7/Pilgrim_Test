@@ -3,7 +3,7 @@ from django.core.validators import MinLengthValidator
 
 class Contributor(models.Model):
     name = models.CharField(max_length=200, validators=[MinLengthValidator(5)])
-    author = models.CharField(max_length=200)
+    author = models.CharField(max_length=200, default= '')
     editor = models.CharField(max_length=200)
     reviewer = models.CharField(max_length=200)
     email = models.EmailField()
